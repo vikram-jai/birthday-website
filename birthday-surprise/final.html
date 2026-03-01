@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Final Surprise 🎁</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark navbar-main fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">🎂 Birthday Surprise</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="memories.html">Memories</a></li>
+                <li class="nav-item"><a class="nav-link" href="wishes.html">Wishes</a></li>
+                <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+                <li class="nav-item"><a class="nav-link" href="letter.html">Letter</a></li>
+                <li class="nav-item"><a class="nav-link active" href="final.html">Final Surprise</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Final Section -->
+<section class="final-section">
+    <div class="final-emoji animate-fadeIn">🎁</div>
+    <h1 class="final-title animate-fadeIn-delay1">Forever & Always</h1>
+
+    <div class="final-hearts animate-fadeIn-delay2">
+        <span>❤️</span>
+        <span>💜</span>
+        <span>💖</span>
+        <span>💜</span>
+        <span>❤️</span>
+    </div>
+
+    <p class="final-message animate-fadeIn-delay3">
+        No matter the distance, no matter the time —<br>
+        our friendship is permanent, our bond is unbreakable.<br>
+        You are loved more than words can ever express. ❤️
+    </p>
+
+    <div class="animate-fadeIn-delay4">
+        <a href="index.html" class="btn-glow">🏠 Back to Home</a>
+    </div>
+</section>
+
+<!-- Music Toggle -->
+<button class="music-toggle" id="musicToggle" title="Toggle Music">🔇</button>
+<audio id="bgMusic" loop>
+    <source src="music/song.mp3" type="audio/mpeg">
+</audio>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<script src="js/script.js"></script>
+<script>
+    // Continuous confetti burst on final page
+    function launchConfetti() {
+        confetti({ particleCount: 80, spread: 100, origin: { y: 0.6 }, colors: ['#7c3aed', '#f472b6', '#a78bfa', '#ffd700', '#ff758c'] });
+    }
+    launchConfetti();
+    setInterval(launchConfetti, 3000);
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
