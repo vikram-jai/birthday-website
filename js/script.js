@@ -69,8 +69,17 @@ document.addEventListener('DOMContentLoaded', function () {
     // ------- TYPING ANIMATION (Letter Page) -------
     const typingEl = document.getElementById('typing');
     if (typingEl) {
-        const text = "Dear Janani,\n\nYou are the strongest, funniest, and most caring girl in my life. Every moment spent with you is a memory I cherish forever.\n\nYour smile lights up the darkest days, your laughter is the best melody, and your heart is the purest I've ever known.\n\nOn this special day, I just want you to know — you are loved beyond words, appreciated beyond measure, and missed beyond belief.\n\nHappy Birthday, Queen! 👑🎂";
+        const text = "Dear Janani,\n\n" +
+"Many more happy returns of the day Mapla! 🎂\n\n" +
 
+"Unna pathi sollanum na, nee enaku just oru friend illa… bestu bestu friend, sometimes sisterly bond, sometimes advisor — intha madhiri multi emotional feelings koduthu irukka.\n\n" +
+
+"Life la sandhosamo kastamo un kitta dhaan mothalla solla thonum. Unkitta share pannum pothu manasu romba light ah feel aagum. Thanks for being my comfort zone.\n\n" +
+
+"Un manasu romba pure (Gem). Always ippadiye happy ah iru, smile pannitu iru, and always be my best friend forever.\n\n" +
+
+"Once again,\n" +
+"Happy Birthday Janani! 👑🎉";
         let i = 0;
         const cursor = typingEl.querySelector('.cursor');
 
