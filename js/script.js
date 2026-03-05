@@ -69,8 +69,17 @@ document.addEventListener('DOMContentLoaded', function () {
     // ------- TYPING ANIMATION (Letter Page) -------
     const typingEl = document.getElementById('typing');
     if (typingEl) {
-        const text = "Dear Janani,\n\nYou are the strongest, funniest, and most caring girl in my life. Every moment spent with you is a memory I cherish forever.\n\nYour smile lights up the darkest days, your laughter is the best melody, and your heart is the purest I've ever known.\n\nOn this special day, I just want you to know — you are loved beyond words, appreciated beyond measure, and missed beyond belief.\n\nHappy Birthday, Queen! 👑🎂";
+        const text = "Dear Janani,\n\n" +
+"Many more happy returns of the day Mapla! 🎂\n\n" +
 
+"Unna pathi sollanum na, nee enaku just oru friend illa… bestu bestu friend, sometimes sisterly bond, sometimes advisor — intha madhiri multi emotional feelings koduthu irukka.\n\n" +
+
+"Life la sandhosamo kastamo un kitta dhaan mothalla solla thonum. Unkitta share pannum pothu manasu romba light ah feel aagum. Thanks for being my comfort zone.\n\n" +
+
+"Un manasu romba pure (Gem). Always ippadiye happy ah iru, smile pannitu iru, and always be my best friend forever.\n\n" +
+
+"Once again,\n" +
+"Happy Birthday Janani! 👑🎉";
         let i = 0;
         const cursor = typingEl.querySelector('.cursor');
 
@@ -116,11 +125,22 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // ------- MUSIC TOGGLE -------
+    // ------- MUSIC TOGGLE (persistent across pages) -------
     const musicToggle = document.getElementById('musicToggle');
     const bgMusic = document.getElementById('bgMusic');
 
     if (musicToggle && bgMusic) {
+        // restore last playback position
+        const savedTime = parseFloat(localStorage.getItem('musicTime') || '0');
+        if (!isNaN(savedTime) && savedTime > 0) {
+            // wait for metadata to load before setting currentTime
+            bgMusic.addEventListener('loadedmetadata', function () {
+                if (bgMusic.duration > savedTime) {
+                    bgMusic.currentTime = savedTime;
+                }
+            });
+        }
+
         // Check if music was playing (persisted state)
         const wasPlaying = localStorage.getItem('musicPlaying') === 'true';
         if (wasPlaying) {
@@ -131,6 +151,16 @@ document.addEventListener('DOMContentLoaded', function () {
                 // Autoplay blocked; require user click
             });
         }
+
+        // update stored time periodically
+        bgMusic.addEventListener('timeupdate', function () {
+            localStorage.setItem('musicTime', bgMusic.currentTime);
+        });
+
+        // also store when user leaves page
+        window.addEventListener('beforeunload', function () {
+            localStorage.setItem('musicTime', bgMusic.currentTime);
+        });
 
         musicToggle.addEventListener('click', function () {
             if (bgMusic.paused) {
