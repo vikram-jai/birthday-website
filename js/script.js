@@ -125,11 +125,22 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // ------- MUSIC TOGGLE -------
+    // ------- MUSIC TOGGLE (persistent across pages) -------
     const musicToggle = document.getElementById('musicToggle');
     const bgMusic = document.getElementById('bgMusic');
 
     if (musicToggle && bgMusic) {
+        // restore last playback position
+        const savedTime = parseFloat(localStorage.getItem('musicTime') || '0');
+        if (!isNaN(savedTime) && savedTime > 0) {
+            // wait for metadata to load before setting currentTime
+            bgMusic.addEventListener('loadedmetadata', function () {
+                if (bgMusic.duration > savedTime) {
+                    bgMusic.currentTime = savedTime;
+                }
+            });
+        }
+
         // Check if music was playing (persisted state)
         const wasPlaying = localStorage.getItem('musicPlaying') === 'true';
         if (wasPlaying) {
@@ -140,6 +151,16 @@ document.addEventListener('DOMContentLoaded', function () {
                 // Autoplay blocked; require user click
             });
         }
+
+        // update stored time periodically
+        bgMusic.addEventListener('timeupdate', function () {
+            localStorage.setItem('musicTime', bgMusic.currentTime);
+        });
+
+        // also store when user leaves page
+        window.addEventListener('beforeunload', function () {
+            localStorage.setItem('musicTime', bgMusic.currentTime);
+        });
 
         musicToggle.addEventListener('click', function () {
             if (bgMusic.paused) {
